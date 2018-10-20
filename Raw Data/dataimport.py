@@ -12,15 +12,15 @@ if "phonedata" in dblist:
   client = MongoClient('localhost', 27017)
   client.drop_database('phonedata')
   mydb = myclient['phonedata']
-  mycol = mydb['raw_data']
+  mycol = mydb['road_data']
 else:
     mydb = myclient['phonedata']
-    mycol = mydb['raw_data']
+    mycol = mydb['road_data']
 
 def import_content(filepath):
     mng_client = pymongo.MongoClient('localhost', 27017)
     mng_db = mng_client['phonedata']
-    collection_name = 'raw_data'
+    collection_name = 'road_data'
     db_cm = mng_db[collection_name]
     cdir = os.path.dirname(__file__)
     file_res = os.path.join(cdir, filepath)
@@ -31,5 +31,5 @@ def import_content(filepath):
     db_cm.insert(data_json)
 
 if __name__ == "__main__":
-  filepath = 'cleaned_data.csv'
+  filepath = 'filtered.csv'
   import_content(filepath)
