@@ -33,7 +33,7 @@ def index():
 def get_all_road_data():
   output = []
   for s in db.road_data.find():
-    output.append({'Latitude' : s['Latitude'], 'Longitude' : s['Longitude']})
+    output.append({'Latitude' : s['Latitude'], 'Longitude' : s['Longitude'], 'driver' : s['driver']})
   return jsonify({'result' : output})
 
 #experimental code:  want to allow us to pull only the location records for a certain driverself.
@@ -43,7 +43,7 @@ def get_one_driver(driver):
   road_data = db.road_data
   s = road_data.find_one({'driver' : driver})
   if s:
-    output = {'driver' : s['driver'],'Latitude' : s['Latitude'], 'Longitude' : s['Longitude']}
+    output = {'G' : s['G'], 'driver' : s['driver'],'Latitude' : s['Latitude'], 'Longitude' : s['Longitude']}
   else:
     output = "No such name"
   return jsonify({'result' : output})
