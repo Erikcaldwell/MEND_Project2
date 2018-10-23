@@ -2,7 +2,7 @@
 import pymongo
 from flask import Flask, render_template, redirect
 import flask
-from flask_pretty import Prettify
+# from flask_pretty import Prettify
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -10,7 +10,7 @@ from flask import request
 
 # Create flask app
 app = Flask(__name__)
-prettify = Prettify(app)
+#prettify = Prettify(app)
 
 # Connect to MongoDB
 conn = "mongodb://localhost:27017"
@@ -33,8 +33,13 @@ def index():
 def get_all_road_data():
   output = []
   for s in db.road_data.find():
-    output.append({'Latitude' : s['Latitude'], 'Longitude' : s['Longitude'], 'driver' : s['driver']})
+    output.append({'Driver' : s['Driver'], 'Latitude' : s['Latitude'], 'Longitude' : s['Longitude'], 'G':s['G']})
   return jsonify({'result' : output})
+
+# a plotly page
+@app.route('/plotly')
+def visulization():
+    return render_template('plotly.html')
 
 #experimental code:  want to allow us to pull only the location records for a certain driverself.
 #this code currently does not work...
@@ -43,7 +48,7 @@ def get_one_driver(driver):
   road_data = db.road_data
   s = road_data.find_one({'driver' : driver})
   if s:
-    output = {'G' : s['G'], 'driver' : s['driver'],'Latitude' : s['Latitude'], 'Longitude' : s['Longitude']}
+    output = {'G' : s['G'], 'Driver' : s['driver'],'Latitude' : s['Latitude'], 'Longitude' : s['Longitude']}
   else:
     output = "No such name"
   return jsonify({'result' : output})

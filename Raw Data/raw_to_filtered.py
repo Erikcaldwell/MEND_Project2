@@ -9,8 +9,8 @@ print(df.count())
 
 mean_G = df.G.mean()
 sd_G = df.G.std()
-low_limit = meanG -2*sdG
-high_limit = meanG + 2*sdG
+low_limit = mean_G - 2*sd_G
+high_limit = mean_G + 2*sd_G
 print(mean_G)
 print(sd_G)
 print(low_limit)
