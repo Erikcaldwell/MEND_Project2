@@ -43,14 +43,12 @@ d3.json(`/api/location`).then(function(data) {
     {
         values: values,
         labels: ['Zhisen(Marina)', 'Erik', 'Naazneen', 'Daniel'],
-        hovertext: ['Marina', 'Erik', 'Naazneen', 'Daniel'],
-        hoverinfo: "hovertext",
         type: "pie"
     }
     ];
 
     var pieLayout = {
-        title: "Proportion of Bumpy Roads for Each Driver",
+        title: "Proportion of Bumpy Roads Driven by Each Driver",
         legend: {
             x: 1,
             y: 1
@@ -77,7 +75,6 @@ d3.json(`/api/location`).then(function(data) {
         type: 'histogram',
     };
     var histLayout = {
-        title: "Frequence of G Force",
         xaxis: {title: 'G force'},
         yaxis: {title: 'Frequency'}
     }
@@ -97,11 +94,13 @@ d3.json(`/api/location`).then(function(data) {
         x: latitude,
         y: longitude,
         text: g_force_text,
+        type: 'scatter',
         mode: "markers",
         marker: {
-            size: g_force * 600,
-            color: driver,
-            colorscale: "Earth"
+            size: g_force.map(g => g*10),
+            // color: driver,
+            colorscale: "Earth",
+            color: 'purple'
         }
         }
     ];
