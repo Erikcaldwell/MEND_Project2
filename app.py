@@ -67,9 +67,9 @@ def SanDiego_visualization():
     return render_template('accident.html')
 
 # a root index page
-@app.route('/index')
+@app.route('/')
 def index():
-    return render_template('index_main.html')
+    return render_template('index.html')
 
 #experimental code:  want to allow us to pull only the location records for a certain driverself.
 #this code currently does not work...
