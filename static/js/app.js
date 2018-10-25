@@ -43,8 +43,8 @@ d3.json(`/api/location`).then(function(data) {
     {
         values: values,
         labels: ['Zhisen(Marina)', 'Erik', 'Naazneen', 'Daniel'],
-        hovertext: ['Marina', 'Erik', 'Naazneen', 'Daniel'],
-        hoverinfo: "hovertext",
+        // hovertext: ['Marina', 'Erik', 'Naazneen', 'Daniel'],
+        // hoverinfo: "hovertext",
         type: "pie"
     }
     ];
@@ -100,7 +100,7 @@ d3.json(`/api/location`).then(function(data) {
         mode: "markers",
         marker: {
             size: g_force * 600,
-            color: driver,
+            color: 'purple',
             colorscale: "Earth"
         }
         }
