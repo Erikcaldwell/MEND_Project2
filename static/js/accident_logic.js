@@ -1,7 +1,7 @@
 // Function to determine marker size based on population
-function markerSize(population) {
-  return population;
-}
+// function markerSize(population) {
+//   return population;
+// }
 
 // An array containing all of the information needed to create city and state markers
 var pop = [
@@ -195,10 +195,10 @@ for (var i = 0; i < pop.length; i++) {
   cityMarkers.push(
     L.circle(pop[i].coordinates, {
       stroke: false,
-      fillOpacity: 0.8,
+      fillOpacity: 0.65,
       color: "green",
       fillColor: "green",
-      radius: markerSize(pop[i].city.population/10)
+      radius: pop[i].city.population/50
     })
   );
 
@@ -209,7 +209,7 @@ for (var i = 0; i < pop.length; i++) {
       fillOpacity: 0.8,
       color: "purple",
       fillColor: "purple",
-      radius: markerSize(pop[i].accident.population*10)
+      radius: pop[i].accident.population
     })
   );
 }
@@ -241,8 +241,8 @@ var baseMaps = {
 
 // Create an overlay object
 var overlayMaps = {
-  "city": city,
-  "accident": accident
+  "Population": city,
+  "Accident": accident
 };
 
 // Define a map object
