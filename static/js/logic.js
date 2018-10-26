@@ -23,9 +23,9 @@ d3.json(link).then(function(data) {
      coordinates.push(result.Latitude)
      coordinates.push(result.Longitude)
      L.marker(coordinates).addTo(map)
-     //L.polyline(coordinates).addTo(map)
-     //L.geoJSON(coordinates).addTo(map)
-  });
+     var newMarker = L.marker(coordinates)
+     newMarker.addTo(map)
+     newMarker.bindPopup("<br> Driver: " + result.Driver + "<br> Latitude: " + result.Latitude + "<br> Longitude: " + result.Longitude + "<br> G Force: " + result.G)
 
-  //L.geoJson(results).addTo(map);
+  });
 });
